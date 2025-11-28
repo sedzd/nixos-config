@@ -5,10 +5,10 @@ let
 in
 {
   imports = [
-    ../../modules/darwin/secrets.nix
+    # ../../modules/darwin/secrets.nix  # Disabled - requires nix-secrets repo access
     ../../modules/darwin/home-manager.nix
     ../../modules/shared
-    agenix.darwinModules.default
+    # agenix.darwinModules.default  # Disabled - secrets not configured
   ];
   # Setup user, packages, programs
   nix = {
@@ -27,7 +27,7 @@ in
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
     # myEmacs  # Disabled - not using Emacs
-    agenix.packages."${pkgs.system}".default
+    # agenix.packages."${pkgs.system}".default  # Disabled - secrets not configured
   ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
   #launchd.user.agents = {

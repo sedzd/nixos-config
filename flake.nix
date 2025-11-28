@@ -40,16 +40,17 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    secrets = {
-      url = "git+ssh://git@github.com/sedzd/nix-secrets.git";
-      flake = false;
-    };
+    # Secrets disabled for fresh install - uncomment after SSH is configured
+    # secrets = {
+    #   url = "git+ssh://git@github.com/sedzd/nix-secrets.git";
+    #   flake = false;
+    # };
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, darwin, claude-desktop, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, nixpkgs, flake-utils, disko, agenix, secrets, chaotic } @inputs:
+  outputs = { self, darwin, claude-desktop, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, nixpkgs, flake-utils, disko, agenix, chaotic } @inputs:
     let
       user = "dustin";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
