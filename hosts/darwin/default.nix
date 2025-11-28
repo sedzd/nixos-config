@@ -1,7 +1,7 @@
 { agenix, config, pkgs, ... }:
 let 
   user = "dustin";
-  myEmacs = import ../../modules/shared/emacs.nix { inherit pkgs; };
+  # myEmacs = import ../../modules/shared/emacs.nix { inherit pkgs; };  # Disabled - not using Emacs
 in
 {
   imports = [
@@ -26,7 +26,7 @@ in
   };
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
-    myEmacs
+    # myEmacs  # Disabled - not using Emacs
     agenix.packages."${pkgs.system}".default
   ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 

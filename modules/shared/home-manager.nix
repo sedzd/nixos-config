@@ -66,13 +66,15 @@ let name = "Dustin Lyons";
       # Ripgrep alias
       alias search='rg -p --glob "!node_modules/*" --glob "!vendor/*" "$@"'
 
-      # Emacs is my editor
-      export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
-      e() {
-          emacsclient -t "$@"
-      }
+      # Editor settings - using vim instead of emacs
+      # export ALTERNATE_EDITOR=""
+      # export EDITOR="emacsclient -t"
+      # export VISUAL="emacsclient -c -a emacs"
+      # e() {
+      #     emacsclient -t "$@"
+      # }
+      export EDITOR="vim"
+      export VISUAL="vim"
       
       # Laravel Artisan
       alias art='php artisan'

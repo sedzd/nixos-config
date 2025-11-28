@@ -1,34 +1,36 @@
 _:
 
+# Homebrew Casks - Uncomment apps as needed
+# Use: brew search <app> to find cask names
 [
   # Development Tools
-  "claude"
-  "insomnia"
-  "tableplus"
-  "ngrok"
-  "postico"
-  "visual-studio-code"
-  "wireshark-app"
+  # "claude"
+  # "insomnia"
+  # "tableplus"
+  # "ngrok"
+  # "postico"
+  # "visual-studio-code"
+  # "wireshark-app"
 
   # Communication Tools
-  "discord"
-  "loom"
-  "slack"
-  "telegram"
-  "zoom"
+  # "discord"
+  # "loom"
+  # "slack"
+  # "telegram"
+  # "zoom"
 
   # Utility Tools
-  "appcleaner"
-  "syncthing-app"
+  # "appcleaner"
+  # "syncthing-app"
 
   # Entertainment Tools
-  "steam"
-  "vlc"
+  # "steam"
+  # "vlc"
 
   # Productivity Tools
-  "raycast"
-  "asana"
+  # "raycast"
+  # "asana"
 
   # Browsers
-  "google-chrome"
+  # "google-chrome"
 ]

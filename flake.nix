@@ -3,7 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager.url = "github:nix-community/home-manager";
+    # home-manager.url = "github:nix-community/home-manager";  # Disabled - managing configs manually
     agenix.url = "github:ryantm/agenix";
     claude-desktop = {
       url = "github:k3d3/claude-desktop-linux-flake";
@@ -12,11 +12,11 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    # plasma-manager = {  # Disabled - requires home-manager
+    #   url = "github:nix-community/plasma-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,7 +41,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets = {
-      url = "git+ssh://git@github.com/dustinlyons/nix-secrets.git";
+      url = "git+ssh://git@github.com/sedzd/nix-secrets.git";
       flake = false;
     };
     chaotic = {
@@ -49,7 +49,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, darwin, claude-desktop, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, plasma-manager, nixpkgs, flake-utils, disko, agenix, secrets, chaotic } @inputs:
+  outputs = { self, darwin, claude-desktop, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, nixpkgs, flake-utils, disko, agenix, secrets, chaotic } @inputs:
     let
       user = "dustin";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -112,7 +112,7 @@
           inherit system;
           specialArgs = inputs // { inherit user; };
           modules = [
-            home-manager.darwinModules.home-manager
+            # home-manager.darwinModules.home-manager  # Disabled - managing configs manually
             nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
@@ -140,15 +140,15 @@
             modules = [
               disko.nixosModules.disko
               chaotic.nixosModules.default
-              home-manager.nixosModules.home-manager {
-                home-manager = {
-                  sharedModules = [ plasma-manager.homeModules.plasma-manager ]; 
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  users.${user} = { config, pkgs, lib, ... }:
-                    import ./modules/nixos/home-manager.nix { inherit config pkgs lib inputs; };
-                };
-              }
+              # home-manager.nixosModules.home-manager {  # Disabled - managing configs manually
+              #   home-manager = {
+              #     sharedModules = [ plasma-manager.homeModules.plasma-manager ]; 
+              #     useGlobalPkgs = true;
+              #     useUserPackages = true;
+              #     users.${user} = { config, pkgs, lib, ... }:
+              #       import ./modules/nixos/home-manager.nix { inherit config pkgs lib inputs; };
+              #   };
+              # }
               ./hosts/nixos
             ];
           }
@@ -163,15 +163,15 @@
             modules = [
               disko.nixosModules.disko
               chaotic.nixosModules.default
-              home-manager.nixosModules.home-manager {
-                home-manager = {
-                  sharedModules = [ plasma-manager.homeModules.plasma-manager ]; 
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  users.${user} = { config, pkgs, lib, ... }:
-                    import ./modules/nixos/home-manager.nix { inherit config pkgs lib inputs; };
-                };
-              }
+              # home-manager.nixosModules.home-manager {  # Disabled - managing configs manually
+              #   home-manager = {
+              #     sharedModules = [ plasma-manager.homeModules.plasma-manager ]; 
+              #     useGlobalPkgs = true;
+              #     useUserPackages = true;
+              #     users.${user} = { config, pkgs, lib, ... }:
+              #       import ./modules/nixos/home-manager.nix { inherit config pkgs lib inputs; };
+              #   };
+              # }
               ./hosts/nixos/garfield
             ];
           };
